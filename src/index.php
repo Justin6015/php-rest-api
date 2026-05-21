@@ -23,9 +23,10 @@ $id = $parts[2] ?? null;
 
 $database = new Database("mysql", "root", "root", "app");
 
-$connection = $database->getConnection();
+$gateway = new AccountGateway($database);
 
-$controller = new AccountController();
+$controller = new AccountController($gateway);
+
 $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 
 ?>

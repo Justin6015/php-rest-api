@@ -2,6 +2,9 @@
 
 class AccountController
 {
+    public function __construct(private AccountGateway $gateway) 
+    {}
+
     public function processRequest(string $method, ?string $id): void {
         // var_dump($method, $id);
 
@@ -19,7 +22,7 @@ class AccountController
     private function processCollectionRequest(string $method): void {
         switch ($method) {
             case "GET":
-                echo json_encode(["id" =>  69]);
+                echo json_encode($this->gateway->getAll());
                 break;
         }
     }
