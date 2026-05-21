@@ -1,5 +1,25 @@
 <?php
 
-var_dump($_SERVER["REQUEST_URI"]);
+declare(strict_types=1);
+
+spl_autoload_register(function ($class) {
+    require_once __DIR__ . "/api/" . $class . ".php";
+});
+
+header("Content-Type: application/json; charset=UTF-8");
+
+$parts = explode("/", $_SERVER["REQUEST_URI"]);
+
+// print_r($parts);
+
+if ($parts[1] != "accounts") {
+    http_response_code(404);
+    exit();
+}
+
+$id = $parts[2] ?? null;
+
+$controller = new AccountController();
+$controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 
 ?>
