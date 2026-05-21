@@ -2,6 +2,8 @@
 
 CURD REST-API with PHP, MySQL
 
+A practice project.
+
 ## Technologien
 
 PHP, MySQL, Docker
@@ -11,6 +13,14 @@ PHP, MySQL, Docker
 Container start, detached
 
 `docker compose up -d`
+
+### setup
+
+Create DB and Table in phpMyAdmin [`create_db.sql`](./scripts/create_db.sql)
+
+Insert example data: [`insert_accounts_example.sql`](./scripts/insert_accounts_example.sql)
+
+---
 
 get
 

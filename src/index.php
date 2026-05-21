@@ -19,6 +19,10 @@ if ($parts[1] != "accounts") {
 
 $id = $parts[2] ?? null;
 
+$database = new Database("mysql", "root", "rootX", "app");
+
+$connection = $database->getConnection();
+
 $controller = new AccountController();
 $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 
